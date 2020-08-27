@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bubblesort visualisation</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+            let values = [];
+            let i = 0;
+            let j = 0;
+
+            // Initialises the program whilst filling the values array with random values.
+            function setup() {
+                createCanvas(700, 400);
+                for (let i = 0; i < width / 8; i++) {
+                    values.push(random(height));
+                }
+            }
+
+            // The draw() function will keep getting executed until the program stops.
+            function draw() {
+                background(32);
+                bubbleSort();
+                simulateSorting();
+            }
+
+            // The bubbleSort() function sorts taking 8 elements of the array per frame.
+            function bubbleSort() {
+                for (let k = 0; k < 8; k++) {
+                    if (i < values.length) {
+                        let temp = values[j];
+                        if (values[j] > values[j + 1]) {
+                            values[j] = values[j + 1];
+                            values[j + 1] = temp;
+                        }
+                        j++;
+
+                        if (j >= values.length - i - 1) {
+                            j = 0;
+                            i++;
+                        }
+                    } else {
+                    noLoop();
+                    }
+                }
+            }
+
+            // The simulateSorting() function animates the whole algorithm by drawing rectangles 
+            // using values.
+            function simulateSorting() {
+                for (let i = 0; i < values.length; i++) {
+                    stroke(100, 143, 143);
+                    fill(50);
+                    rect(i * 8, height, 8, -values[i], 20);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Bubblesort visualisation</h1>
+        <div id="sketch-div"></div>
+    </body>
+</html>
