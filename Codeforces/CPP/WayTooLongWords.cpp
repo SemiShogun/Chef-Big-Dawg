@@ -2,6 +2,9 @@
 
 using namespace std;
 
+/**
+ *  https://codeforces.com/problemset/problem/71/A
+ */
 int main() {
     int n;
     string s;
